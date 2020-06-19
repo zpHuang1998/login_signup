@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录注册页面</title>
+    <style>
+       *{
+           margin: 0;
+           padding: 0;
+       }
+
+       body{
+           height: 100vh;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background: linear-gradient(45deg,rgb(147, 226, 43),rgb(201, 201, 18));
+       }
+
+       .container{
+           position: relative;
+           width: 70rem;
+       }
+       .container img{
+           width: 70rem;
+       }
+
+    
+           
+       .switch span{
+           color: #ccc;
+           font-size: 1.4rem;
+           cursor: pointer;
+       }
+    .switch span.active{
+        color: rgb(181,154,254);
+     }
+     .panel{
+         margin: 10rem 0 0;
+         position: absolute;
+         right: 18px;
+         top:-7rem;;
+     }
+
+     form{
+         width: 15rem;
+         margin: 2rem 0 0;
+     }
+
+
+     form .input{
+        position: relative;
+        width: 100%;
+        margin: 2rem 0;
+     }
+
+     .input input{
+        outline: none;
+        width: 100%;
+        border: none;
+        border-bottom: .1rem solid rgb(181,154,254);
+     }
+
+     .input::after{
+         content: attr(placeholder);
+         position: absolute;
+         left: 0;
+         top:-10%;
+         color: rgb(125, 116, 151);
+         transition: .3s;
+     }
+
+     .input.focus::after{
+         top: -70%;
+         font-size: .1rem;
+     }
+
+     .login .input#email,
+     .login .input#repeat{
+         margin: 0;
+         height: 0;
+         opacity: 0;
+     }
+
+     form span{
+         display: block;
+         color: rgb(118, 104, 158);
+         font-size: .8rem;
+         cursor: pointer;
+     }
+     
+     form button{
+         border: none;
+         outline: none;
+         margin: 2rem 0 0;
+         width: 100%;
+         height: 3.5rem;
+         border-radius: 3rem;
+         background: linear-gradient(90deg,rgb(147, 226, 43),rgb(201, 201, 18)) fixed;
+         box-shadow: 0 0 0px rgb(147, 226, 43);
+         font-size: 1.5rem;
+         color:#fff;
+         cursor: pointer;
+     }
+
+    
+    </style>
+
+</head>
+<body>
+      <div class="container">
+          <img src="wallhaven-g8171e_1920x1080.png" alt="">
+          <div class="panel">
+              <div class="content login">
+                  <div class="switch">
+                      <span id="login">登录</span><span>/</span><span id="signup">注册</span>
+                  </div>
+                  <form action="">
+                      <div id="email" class="input" placeholder="邮箱"><input type="text"></div>
+                      <div class="input" placeholder="用户名"><input type="text"></div>
+                      <div class="input" placeholder="密码"><input type="password"></div>
+                      <div id="repeat" class="input" placeholder="确认密码"><input type="password"></div>
+                      <span>忘记密码?</span>
+                      <button>登&nbsp&nbsp&nbsp录</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+      $('#login').click(function(){
+          $('.switch span').removeClass('active');
+          $(this).addClass('active');
+
+          $(this).parents('.content').removeClass('signup');
+          $(this).parents('.content').addClass('login');
+
+          $('form button').text('登录');
+      })
+
+      $('#signup').click(function(){
+          $('.switch span').removeClass('active');
+          $(this).addClass('active');
+          $(this).parents('.content').removeClass('login');
+          $(this).parents('.content').addClass('signup');
+
+          $('form button').text('注册');
+        })
+
+      
+
+      $('.input input').on('focus',function(){
+          $(this).parent().addClass('focus');
+      })
+      $('.input input').on('blur',function(){
+         if($(this).val() === '')
+           $(this).parent().removeClass('focus');
+      })
+
+</script>
+</html>
